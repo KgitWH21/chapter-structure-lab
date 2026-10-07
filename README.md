@@ -54,6 +54,18 @@ python assemble.py
 python build-purposes.py
 ```
 
+## GitHub Pages deployment
+
+The workflow in `.github/workflows/deploy-pages.yml` publishes only the contents of `dist/` on pushes to `main`. No build step is needed; the generated catalogs are already included.
+
+1. In the GitHub repository, open **Settings → Pages**.
+2. Under **Build and deployment**, change **Source** to **GitHub Actions**.
+3. Commit and push the workflow to `main`.
+4. Open **Actions → Deploy Chapter Structure Lab** and wait for a successful run. If the workflow was already pushed before changing the Pages setting, use **Run workflow** on `main`.
+5. Open the site URL shown under **Settings → Pages** or in the deployment result.
+
+The contents of `dist/` become the website root, so the site URL does not need `/dist/` at the end. Source files and reference documents remain in the repository but are not included in the Pages deployment. Future pushes to `main` update the site automatically.
+
 ## Mobile deployment
 
 Publish the contents of dist to your own HTTPS static host without a login gate. The deployment output directory is dist; there is no build step. Publish only dist, rather than the complete project and reference materials.
