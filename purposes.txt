@@ -1,0 +1,144 @@
+# Plot & forward movement
+Give a character an immediate goal|Make a want concrete enough that the character can act on it before the scene ends.|4,5,7,47|An ordinary errand becomes the only way to reach someone who won't answer.
+Force a decision|Remove the option of postponing a choice; make either answer change what happens next.|5,34,47,84,3|A character must choose who receives the last available seat.
+Launch a new problem|Disturb a workable situation with an event that demands a response.|4,7,8,94|A routine delivery arrives addressed to someone who hasn't been born.
+Turn success into a complication|Grant the immediate goal, then reveal the obligation or danger attached to it.|5,7,17,45|The recovered object proves the rescuer was at the crime scene.
+Make a plan fail|Let a plausible plan meet a specific unforeseen obstacle and require a new approach.|5,9,48,76|The escape route works perfectly until someone refuses to leave.
+Create a consequential setback|End with fewer resources, less trust, or a narrower set of options.|5,17,77,80|A rescue attempt saves one person while losing the group's transport.
+Converge separate story threads|Make previously separate actions affect the same event or decision.|15,29,30,68|Two characters arrive seeking the same stranger for incompatible reasons.
+Set the next course of action|Turn what happened into a commitment that supplies the next scene's goal.|4,5,34,47|After comparing failed attempts, the group agrees to approach the person they excluded.
+# Information & mystery
+Plant a fair clue|Place a useful detail where it has an immediate ordinary function and a later significance.|19,44,50,53|A repaired sleeve identifies someone only after the reader learns who can sew that stitch.
+Reveal a concealed fact|Make one discovery alter what a character can credibly believe.|1,19,24,40,50|A routine receipt shows that the absent person stayed nearby for weeks.
+Seed an unanswered question|Give the reader a precise gap in knowledge worth carrying forward.|19,23,50,53|Every account mentions the same chair, but nobody admits sitting in it.
+Offer a plausible false lead|Make an incorrect interpretation reasonable through selective but truthful evidence.|23,24,40,41,85|An incriminating object belongs to someone who was trying to prevent the event.
+Disprove a working theory|Use new evidence to overturn the explanation that has organized the search.|24,34,40,41,48|The suspect's impossible alibi is verified by the accuser's own records.
+Expose conflicting accounts|Make incompatible testimony reveal interests, blind spots, or missing context.|23,35,36,43,50|Two witnesses agree on every action and disagree on what the actions meant.
+Turn information into leverage|Let a discovery change who can ask for what in the next exchange.|40,41,42,44,88|A negotiator learns which name the other side needs kept out of the minutes.
+Preserve productive ambiguity|Resolve one local question while leaving more than one interpretation of the larger event.|19,23,50,53,85|The missing person returns with an explanation that accounts for everything except one detail.
+# Character & inner life
+Expose a contradiction|Place a stated belief beside an action that doesn't fit it.|13,19,43,84|A self-described forgiving person carefully maintains an old enemy's file.
+Test a core value|Make a character pay a concrete cost to act on a principle.|5,34,47,84|Keeping a promise means losing the opportunity they've spent years pursuing.
+Reveal a hidden desire|Let an unguarded choice show what the character wants beneath their declared goal.|19,25,28,74,84,92|Someone offered a promotion asks first whether it requires leaving their hometown.
+Activate a vulnerability|Let a present detail touch a weakness that changes the character's behavior.|5,25,74,79,86|A competent professional loses their place when a stranger uses a childhood nickname.
+Show competence|Give a character a difficult, legible task and let their method reveal mastery.|9,10,24,40,48|An expert solves the small failure everyone else keeps treating as background noise.
+Show a blind spot|Let the reader see the evidence a character's assumptions keep them from using.|23,40,78,84,85|A detective questions every servant while treating the host's account as neutral.
+Break a self-protective habit|Repeat a familiar coping move until the character chooses a different response.|13,17,19,45,86|Someone who always makes a joke answers a painful question directly.
+Revise a self-image|Make a character confront a mismatch between who they think they are and what they've done.|19,34,43,74,84|A celebrated rescuer hears an honest account from the person they left behind.
+# Relationships & intimacy
+Build trust|Create an opportunity to risk something small and have that risk respected.|4,13,19,44|A guarded character entrusts someone with an object of little monetary value.
+Fracture trust|Make an act or omission change what one person can safely expect from another.|5,23,43,84,85|An apparently protective lie prevents someone from making their own choice.
+Deepen intimacy|Let two people share knowledge, attention, or vulnerability unavailable to outsiders.|12,19,61,74,88|A mundane task lets one person reveal why a familiar gesture matters.
+Expose an unequal relationship|Show how the same exchange costs the participants different amounts.|34,40,43,55,84|One person calls a favor trivial; the other has rearranged their life to provide it.
+Shift a loyalty|Make allegiance move through a specific act rather than a declaration alone.|5,29,44,81|A subordinate carries accurate news to the person their leader wants kept uninformed.
+Stage a betrayal|Allow a trusted action to reveal an incompatible hidden commitment.|7,19,23,43,85|The person holding the escape door closes it for a reason the protagonist recognizes.
+Negotiate a boundary|Let characters discover what they will and won't accept from each other.|34,35,40,42,88|A friend agrees to help only if an old pattern stops here.
+Test a reunion|Bring people together after a separation and show what familiarity no longer guarantees.|13,19,22,43,74|Two siblings resume an old routine and discover they remember its rules differently.
+# Conflict & power
+Transfer control of an encounter|Give the apparent weaker participant an action that changes who sets the terms.|9,34,40,42,88|A witness answers the lawyer's question with a verifiable fact the lawyer hoped to avoid.
+Escalate a dispute|Make each exchange raise the cost of retreat or agreement.|9,17,40,42,89,90|A disagreement over a borrowed object exposes a debt neither side can repay.
+Negotiate a bargain|Establish what each side needs, what each can offer, and what the agreement costs.|5,34,36,40,47|Both parties want the crossing opened, but for people the other fears.
+Expose coercion|Show why apparent consent may be shaped by constrained options.|34,40,43,55,81|A volunteer discovers what happens to those who decline the assignment.
+Challenge an authority|Give a subordinate a credible reason and a consequential opportunity to resist.|34,35,37,40,81|A junior clerk finds a rule that contradicts the order they're supposed to carry out.
+Force cooperation between rivals|Create a task neither party can complete alone and let mistrust complicate it.|5,9,29,47,100|Two enemies each hold half of an instruction neither can safely guess.
+Let a threat become concrete|Convert an abstract warning into an immediate, observable consequence.|7,11,17,76,80|The first supposedly safe boundary fails in a way everyone can see.
+Win at an unacceptable cost|Deliver a victory that damages something the winner wanted to protect.|5,9,19,80,84|A character wins the argument using a confidence they promised to keep.
+# Stakes & suspense
+Start a deadline|Make the remaining time change the available choices.|7,11,29,68,80|A message must reach its recipient before a ceremony makes it impossible to act.
+Narrow the escape options|Remove routes one by one while making the remaining geography clear.|11,47,75,76,77|Each failed exit forces the group closer to the room they were avoiding.
+Spend a dwindling resource|Tie every attempt to a count the reader can track.|11,17,59,77,80|Every useful radio call consumes power needed to find the way back.
+Make safety doubtful|Introduce evidence that a place or person considered safe may be compromised.|14,19,64,78,85|A shelter's familiar welcome includes a detail only the pursuer should know.
+Let the reader know more|Show an approaching consequence the viewpoint character can't yet recognize.|14,29,32,50,53|A calm conversation alternates with evidence that the promised transport won't arrive.
+Delay an inevitable encounter|Use the approach to reveal what the character fears losing when they arrive.|10,11,56,75,87,69|A character performs increasingly unnecessary preparations before opening a letter.
+Make a sacrifice necessary|Establish why a meaningful gain now requires giving something up.|5,34,47,76,80|There are enough supplies to reach safety only if someone abandons irreplaceable evidence.
+Turn a small anomaly into dread|Repeat a minor disturbance until its pattern implies a larger danger.|14,17,45,49,85|A harmless error appears in a different record every day, always closer to the character.
+# Rhythm & emotional movement
+Give the reader breathing room|Let reduced external activity make a meaningful reaction or relationship visible.|12,28,54,61,87|After the escape, someone notices a companion has been carrying their broken glasses.
+Build anticipation|Arrange preparation so each completed step makes a coming event more tangible.|8,10,11,15,17|A town readies a welcome for someone only one resident knows is missing.
+Release accumulated tension|Remove immediate dangers in stages and let the body or relationship catch up.|8,12,19,70|A survivor doesn't begin to shake until another person takes over the simplest task.
+Accelerate toward a turn|Shorten the distance between meaningful changes as a decision approaches.|7,8,9,11,29|Several small delays suddenly converge into one urgent choice.
+Deliver comic relief with consequence|Use a comic pattern to reveal character or alter the situation.|4,17,56,88,91|A recurring seating mishap accidentally settles who belongs at the table.
+Shift the emotional register|Let a credible new detail change how the same situation feels.|1,12,19,53,64|A threatening sound turns out to come from someone practicing a gift for the protagonist.
+Make waiting active|Use repetition or observation to show choices being made while an event is delayed.|11,13,14,17,28,65|Each unanswered call changes what a character is willing to admit in the next message.
+Linger on an emotional residue|Give a small action enough space to carry what the previous scene left unresolved.|12,19,54,62,87|A character keeps resetting a place at the table after everyone else has stopped mentioning it.
+# World & institutions
+Teach a world's rule through use|Show a character attempt something and experience a consistent consequence.|4,9,47,64,94|A newcomer learns the local custom only when their courteous gesture causes a problem.
+Reveal how an institution works|Follow a task through the people and procedures that determine its outcome.|37,43,44,48,81|A simple request changes meaning each time a different office processes it.
+Expose a system's failure|Trace a damaging outcome to the ordinary decisions that made it possible.|34,43,48,55,81|Every employee followed the instructions, yet nobody received the warning.
+Show ordinary life in an unusual world|Anchor unfamiliar conditions in a routine human task.|13,28,54,64,65|A household argues over chores related to a completely impossible local phenomenon.
+Make a custom matter|Let participation in a ritual or convention change a relationship or practical outcome.|10,19,39,65,66|A guest skips a small ceremonial step and accidentally refuses an offered alliance.
+Reveal competing social realities|Show how different groups experience the same place or rule.|23,29,32,50,55|A closed bridge means protection to one household and lost income to another.
+Turn geography into a choice|Make the physical route determine what the character must confront.|44,71,72,74,75,77|The safest road passes the home of someone the traveler has wronged.
+Give history present consequences|Bring an inherited practice, document, or ruin into a current decision.|19,22,44,50,63,74|An old boundary marker gives a stranger a legal claim no living resident expected.
+# Theme & moral inquiry
+Test a thematic claim|Stage a situation that complicates a belief the story has offered.|19,34,35,39,84,67|A character who believes honesty heals must decide when to tell a damaging truth.
+Stage a moral dilemma|Offer credible alternatives that protect different goods and cause different harms.|5,34,36,47,84|Keeping one person safe requires withholding information another needs to choose freely.
+Set two values in conflict|Make both principles persuasive before requiring action.|2,5,34,37,84,38|Loyalty to a friend conflicts with responsibility to people the friend has harmed.
+Expose hypocrisy|Let the application of a rule reveal who is exempt from it.|34,40,43,55,84|A leader praises sacrifice immediately before arranging an exception for themselves.
+Humanize an opponent|Show a particular need, attachment, or fear without erasing the harm they cause.|12,19,23,43,87|An adversary interrupts an interrogation to answer a worried child's call.
+Make an abstract idea tangible|Give a philosophical concern an object, task, or relationship the reader can follow.|19,44,57,58,62,99|A dispute about ownership plays out through who may repair a broken family instrument.
+Resist an easy answer|Allow the losing or inconvenient argument to remain visible after the decision.|23,34,35,36,41|The council reaches a workable verdict while one dissenting account remains unresolved.
+Turn belief into action|Require a character to enact a stated conviction in a costly, observable way.|4,5,37,47,84|Someone who advocates forgiveness must make room for a person they personally resent.
+# Setup, echo & payoff
+Plant a future capability|Show a skill, object, or rule solving a small problem before it solves a larger one.|4,9,13,44,47|A child's game establishes the pattern later needed to interpret a warning.
+Foreshadow a coming loss|Give a present detail an emotional weight the reader will recognize later.|14,17,19,54,87|A character casually promises to return an object after a trip.
+Pay off an earlier detail|Make an established element become useful, costly, or emotionally decisive.|9,19,24,44,91|A previously comic habit provides the only reliable sign that an account is false.
+Change the meaning of a motif|Return to a familiar image under conditions that alter its significance.|13,14,16,19,21,62|A light that once signaled welcome now reveals that someone never left.
+Mirror an earlier choice|Recreate a recognizable decision with changed knowledge or character.|13,19,20,45,74|Someone who once fled the room now stays long enough to hear the answer.
+Invert the expected outcome|Prepare a credible expectation, then fulfill the scene's logic in another way.|1,7,9,19,53|A feared confrontation becomes an offer the protagonist can't comfortably accept.
+Establish a meaningful pattern|Repeat an action enough to create a reader expectation that later matters.|13,14,15,17,65|At each stop, a traveler checks for a name nobody else recognizes.
+Break an established pattern|Change one familiar element and let the deviation trigger action.|8,14,17,45,86|The person who always ends the call first suddenly asks the other to stay.
+# Time & memory
+Explain a present reaction through memory|Select a past incident that changes how the current behavior reads.|19,25,26,43,74|A refusal to enter a harmless room becomes understandable through one remembered sound.
+Show gradual change|Repeat comparable moments across time so their differences carry the development.|13,17,54,65,72|A shared meal recurs over years as who serves whom slowly changes.
+Compress a long process|Choose representative stages that preserve cause and consequence across elapsed time.|13,48,50,54,72,60|Several brief records show a tiny misunderstanding becoming official policy.
+Revisit a memory critically|Let new knowledge alter a remembered event without changing its observable facts.|19,23,26,43,74|A childhood act of cruelty may have concealed an attempt to protect someone else.
+Reconstruct a chain of causes|Move through the links that explain how a present situation came about.|24,26,44,48|A damaged package leads backward through a series of individually reasonable decisions.
+Make forgetting consequential|Let lost or uncertain memory change a choice in the present.|19,43,49,79,98|A character remembers a promise while losing the reason it must be kept.
+Connect generations|Let a present action encounter a pattern, burden, or gift inherited from earlier lives.|13,19,26,44,74|A descendant discovers they have repeated a decision they once condemned in a family story.
+Put past and present in dialogue|Alternate times so each passage changes the interpretation of its neighbor.|19,22,29,43,50|A current hearing alternates with the ordinary day it keeps reducing to evidence.
+# Transitions & orientation
+Arrive somewhere changed|Use an entrance to establish how expectations differ from the place encountered.|1,4,19,28,94|A traveler reaches a familiar town and finds everyone using a different name for it.
+Cross a threshold|Make entry into a new place or role change the rules the character must follow.|4,47,73,75,94|A guest becomes a participant the moment they accept an apparently harmless object.
+Move between story arenas|Make a journey carry a decision or discovery that matters at the destination.|28,44,63,71,72|A courier changes their intended message after meeting the people along the route.
+Reorient after a jump in time|Use a clear present task to reveal what changed during an omitted interval.|13,19,50,54,65|A once-frightening responsibility has become routine, except for one new absence.
+Hand the story to another viewpoint|Transfer an object, question, or consequence that gives the new perspective a reason to begin.|23,29,30,44,81|The scene ends as a complaint reaches the person whose ordinary day it will disrupt.
+Gather scattered participants|Bring people together with distinct expectations that generate the next scene.|10,29,32,68,81|A summons means celebration to one invitee and accusation to another.
+Separate an alliance|Make a departure distribute knowledge, goals, or risks across future threads.|5,19,29,44|The group divides supplies fairly while withholding different pieces of the same secret.
+Bridge action into reflection|Let a physical task slow enough for its meaning to become available.|5,12,28,54,87|Cleaning equipment after an operation prompts the first honest question about what happened.
+# Aftermath, loss & repair
+Show the cost of an event|Give consequences to a person, object, or relationship the action affected.|5,12,43,54,80|The first evidence of damage is an ordinary task someone can no longer perform.
+Let a character process shock|Allow disordered impressions to become a usable account or next action.|5,12,25,49,79|A survivor starts with irrelevant details before reaching the decision they're avoiding.
+Make room for grief|Give loss a particular expression without requiring a fixed emotional progression.|12,19,62,74,83|Someone discovers they no longer remember how the absent person took their tea.
+Attempt an apology|Make the speaker name a harm and risk an answer they can't control.|5,19,34,43,88|An apology fails until the speaker stops explaining their intentions.
+Earn a measure of forgiveness|Let repair appear through changed behavior and a response that remains voluntary.|13,19,34,70|The injured person offers a small practical trust while withholding a larger reconciliation.
+Rebuild a damaged bond|Show repeated acts that gradually make cooperation possible again.|12,13,17,19,70|Two estranged people learn to complete a shared task without repeating an old argument.
+Restore limited agency|Give a harmed or defeated character one meaningful choice they can still make.|5,12,47,70,87|A captive can't decide where to go but can decide what account leaves the room.
+Carry a scar forward|Resolve the immediate crisis while making an enduring change visible.|12,19,44,74,87|A character resumes a familiar activity using a workaround they now need.
+# Voice, perception & credibility
+Establish a distinctive narrator|Let selection, rhythm, and judgment reveal who is telling the account.|28,43,56,57,88|The narrator meticulously describes an irrelevant object while avoiding the obvious subject.
+Reveal an unreliable account|Place a discrepancy where the reader can see the narrator's account becoming unstable.|23,43,46,49,84|A confident statement is contradicted by a detail the narrator provides without noticing.
+Contrast public and private selves|Put official speech beside the experience or behavior it leaves out.|31,43,50,84|A polished farewell speech alternates with the speaker's unfinished private notes.
+Transfer a voice's influence|Let one speaker's language alter another person's account or behavior.|13,30,81,88,97|A character begins using the phrases of someone they insist they no longer trust.
+Show contested ownership of a story|Make the right to tell, edit, or preserve an event part of the action.|23,32,43,46,50,101|A witness objects to the version of their experience entered into the record.
+Make absence speak|Let omissions or gaps generate an inference without fully resolving it.|19,23,50,51,58|A family album is carefully labeled except for the person who appears most often.
+Change the reader's vantage|Reframe a familiar event through a different observer or arrangement of images.|19,23,29,53,54|An apparently generous gesture is seen from the person required to receive it.
+Destabilize the telling itself|Let the form of the account become part of the scene's uncertainty.|25,43,46,49,95|The report begins correcting events before the narrator says they occurred.
+# Discovery, atmosphere & encounter
+Create a sense of wonder|Let attention to a particular discovery expand what the character thinks possible.|1,28,54,64,82,94|An ordinary maintenance task opens a view nobody has described before.
+Make the familiar uncanny|Change one governing detail while leaving the everyday setting recognizable.|14,17,19,64,85|The household routine continues perfectly, including the place of someone who has vanished.
+Establish a place's emotional character|Choose environmental details that matter to the viewpoint character's present concern.|28,54,62,71,72,82|The same street feels welcoming or accusatory depending on which windows are lit.
+Encounter an unexpected ally|Let an apparent obstacle become assistance for a specific, believable reason.|1,4,9,19,94|The person blocking the doorway is keeping the protagonist out of danger.
+Encounter a persuasive stranger|Use an unfamiliar person's performance to challenge a belief or invite a risky choice.|4,34,37,40,88|A stranger offers exactly the explanation a character has been hoping to hear.
+Discover a hidden connection|Link previously separate details through a concrete shared cause or relationship.|1,19,24,29,50|Two unrelated keepsakes carry the same repair mark.
+Let an object carry a life|Follow an artifact through uses that reveal the people who held it.|13,19,44,51,54|A practical tool becomes a gift, then evidence, then an inheritance.
+Create an associative discovery|Move between observations until their connection produces a usable insight.|25,27,28,52,74,99,33|A sound recalls a phrase whose wording finally explains a puzzling instruction.
+# Resolution & transformation
+Resolve a local question|Answer the scene's immediate uncertainty with an observable result.|4,6,24,40,41|The visitor learns whether the host sent the letter, even as a larger motive stays unclear.
+Commit to a changed course|Show a choice that makes retreat to the old approach harder.|4,5,34,47,93|A character publicly takes responsibility for a task they previously evaded.
+Demonstrate earned change|Revisit a familiar test and show a materially different response.|13,19,20,45,70|The character encounters the same temptation with the power to refuse it this time.
+Accept a limit|Let recognition of what can't be changed produce a meaningful action within what can.|12,19,34,83,87|A character stops seeking an impossible answer and decides what to preserve for someone else.
+Complete a return|Bring the character back to an earlier place or image with altered understanding.|18,19,21,63,75|The journey ends at the same door, but the traveler knocks for a different reason.
+Leave a resonant open ending|Complete an emotional or thematic movement while leaving a future action unresolved.|1,19,23,53,62,96|A character finally asks the right question; the answer belongs to the next day.
+Pass on a responsibility|Make a transfer of duty, knowledge, or care concrete and voluntary where possible.|4,19,44,65,81|An experienced caretaker gives the keys to someone who notices a problem they missed.
+Close one arc and open another|Deliver a genuine answer whose consequences create the next meaningful question.|4,5,6,19,29|The missing person is found, and their first request changes the purpose of the search.

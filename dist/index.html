@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chapter Structure Lab</title><meta name="description" content="Compare three ways to shape your chapter. Explore openings, structures, information order, and endings, then adapt the beats to your story."><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231c42d8'/%3E%3Cpath d='M9 7h14v3H12v5h9v3h-9v4h11v3H9z' fill='white'/%3E%3C/svg%3E"><link rel="stylesheet" href="style.css"><script defer src="data.js"></script><script defer src="purposes.js"></script><script defer src="app.js"></script><script defer src="treatment-data.js"></script><script defer src="planner.js"></script></head>
+<body>
+<header><a class="brand" href="./" aria-label="Chapter Structure Lab home"><span class="mark" aria-hidden="true">¶</span> Chapter Structure Lab</a><span class="header-note">A writing practice tool</span></header>
+<main>
+<div class="topline"><div><h1>Find your chapter’s shape.</h1><p class="intro">One chapter. Three ways to tell it. Open only what you need.</p></div><button id="compare" class="primary">↻ New options</button></div>
+<details id="chapterNotes" class="disclosure">
+  <summary>Your chapter <span id="chapterSummary" class="summary-note">Add a few notes</span></summary>
+  <div class="disclosure-body">
+    <div class="notes-grid">
+      <label>What happens?<textarea id="chapterHappens" rows="3" placeholder="She returns her father’s keys and discovers he expected her to leave."></textarea></label>
+      <label>What changes?<textarea id="chapterChanges" rows="3" placeholder="Her departure stops feeling like a surprise and starts feeling arranged."></textarea></label>
+      <label>What should the reader feel or wonder?<textarea id="chapterReader" rows="3" placeholder="Did he prepare for her freedom—or push her toward it?"></textarea></label>
+    </div>
+    <p class="help">Keep your chapter in view while you compare. These notes are for you; suggestions come from the catalog, not an analysis of your text.</p>
+  </div>
+</details>
+<details id="comparisonSettings" class="disclosure">
+  <summary>Purpose &amp; settings <span id="comparisonPurpose" class="summary-note"></span></summary>
+  <div class="disclosure-body">
+<section class="toolbar" aria-label="Challenge settings"><label>Explore<select id="level"><option value="grounded">Grounded</option><option value="exploratory" selected>Exploratory</option><option value="wild">Wild</option></select></label><label>Practice<select id="focus"><option value="both">Opening + structure</option><option value="opening">Opening only</option><option value="structure">Structure only</option></select></label><label>Write<select id="length"><option value="outline">A beat outline</option><option value="short" selected>A short scene · 300–600 words</option><option value="chapter">A chapter · your own length</option></select></label><div class="range-note" id="rangeNote"></div></section>
+<section class="purpose-card" aria-labelledby="purposeLabel">
+<div class="purpose-header"><div class="purpose-title"><h2 id="purposeLabel">Scene purpose</h2><label class="toggle"><input id="usePurpose" type="checkbox" checked> Use a scene purpose</label></div><div class="actions"><button id="lockPurpose" class="small" aria-pressed="false">Lock</button><button id="rollPurpose" class="small">↻ Roll purpose</button></div></div>
+<div class="purpose-pickers"><label>Roll from<select id="purposeCategory"><option value="all">All 128 purposes</option></select></label><label>Purpose<select id="purposeSelect"></select></label></div>
+<div class="purpose-content"><div><h3 id="purposeName"></h3><p id="purposeGoal"></p><p class="purpose-seed"><strong>Quick idea</strong> <span id="purposeSeed"></span></p></div><div id="purposeMatches"><h3>Mapped structures</h3><div id="matchedStructures" class="matches"></div><p id="purposeFit" class="fit" role="status"></p></div></div>
+<p class="purpose-note">Roll within a family or pick any purpose directly. Rolling a purpose also updates an unlocked structure. Locks protect your choices from rerolls.</p>
+</section>
+<p class="help">The comparison samples all three ranges. Explore controls rolls in the original exercise below. Locks apply to both.</p>
+  </div>
+</details>
+<section class="comparison" aria-labelledby="comparisonTitle">
+  <div class="section-top"><h2 id="comparisonTitle">Compare treatments</h2><span id="comparisonScope" class="help"></span></div>
+  <div id="treatments" class="treatments"></div>
+</section>
+<details id="selectedPlan" class="disclosure selected-plan" hidden>
+  <summary>Your selected plan <span id="planSummary" class="summary-note"></span></summary>
+  <div class="disclosure-body">
+    <div class="section-top"><h2>Make it yours.</h2><div class="actions"><button id="copyPlan" class="secondary">Copy plan</button><button id="downloadPlan">Download .txt</button></div></div>
+    <p id="planDescription" class="help"></p>
+    <p id="planPairing" class="help"></p>
+    <p id="planContext" class="help"></p>
+    <div class="plan-choices">
+      <label>Information order<select id="planOrder"></select></label>
+      <label>Ending<select id="planEnding"></select></label>
+    </div>
+    <details><summary>Order &amp; ending guidance</summary><p id="planOrderGuide"></p><p id="planEndingGuide"></p><p>These are adaptations to try. Reorder or rewrite your beats to suit them; the original blueprint may use a different sequence or resolution.</p></details>
+    <p class="help">Rename or move the beats, then add your scene notes. Examples stay in the treatment’s Details.</p>
+    <ol id="planBeats" class="plan-beats"></ol>
+    <button id="addBeat">+ Add a beat</button>
+    <p class="help">Your plan can depart from the original exercise. Copy or download to keep it.</p>
+  </div>
+</details>
+<details id="originalExercise" class="disclosure original-exercise">
+<summary>Original exercise &amp; full catalog <span class="summary-note">Direct picks, rolls, locks, and teaching examples</span></summary>
+<div class="disclosure-body">
+<div class="section-top"><p class="help">Explore a single combination or bring it into your chapter plan.</p><div class="actions"><button id="roll">↻ New exercise</button><button id="useExercise" class="secondary">Use this combination</button></div></div>
+<div class="workspace">
+<section class="card opening" id="openingCard" aria-labelledby="openingLabel"><div class="card-top"><span class="section-label" id="openingLabel">01 / Opening</span><div class="actions"><button id="lockOpening" class="small" aria-pressed="false">Lock</button><button id="rollOpening" class="icon" aria-label="Reroll opening">↻</button></div></div><label class="sr-only" for="openingSelect">Choose an opening</label><select id="openingSelect" class="catalog-select"></select><h2 id="openingName"></h2><p id="openingDescription" class="description"></p><div class="example"><h3>See it on the page</h3><blockquote id="openingExample"></blockquote></div><div class="instruction"><h3>Try it</h3><p id="openingTask"></p></div><details><summary>Source notes</summary><p id="openingSource" class="source-text"></p></details></section>
+<section class="card structure" id="structureCard" aria-labelledby="structureLabel"><div class="card-top"><span class="section-label" id="structureLabel">02 / Structure</span><div class="actions"><button id="lockStructure" class="small" aria-pressed="false">Lock</button><button id="rollStructure" class="icon" aria-label="Reroll structure">↻</button></div></div><label class="sr-only" for="structureSelect">Choose a structure</label><select id="structureSelect" class="catalog-select"></select><h2 id="structureName"></h2><p id="structureDescription" class="description"></p><div class="rule"><h3>The rule for this exercise</h3><p id="structureRule"></p></div><div class="beat-heading"><h3>How to write it</h3><label class="toggle"><input id="showExamples" type="checkbox" checked> Show example</label></div><ol id="beats" class="beats"></ol><p class="adaptation">These are practice blueprints. Musical, poetic, and cultural forms are adapted for prose; the exercise explains where it takes liberties.</p></section>
+</div>
+<section class="challenge" aria-labelledby="challengeTitle"><div class="challenge-top"><div><span class="section-label">Your turn</span><h2 id="challengeTitle">Write the combination.</h2></div><button id="copy" class="secondary">Copy challenge</button></div><p id="challengeBrief"></p><div id="challengeRules"></div><p class="check" id="selfCheck"></p></section>
+</div></details>
+<p class="session-note">Notes and plans last while this page is open. Copy or download your plan before leaving.</p>
+<footer><span>128 scene purposes · 81 openings · 94 structural exercises · 7 experimental adaptations</span><details><summary>About the source material</summary><p>Built from your “81 Chapter Introduction Frameworks” and “101 Chapter Structures Blueprint.” The examples and beat maps are original teaching adaptations. Source shorthand has been clarified where it could mislead. The seven interactive AI concepts have separate page-based exercises here; this tool doesn't generate text with AI or run live simulations.</p><p>Choices and locks last while this page is open. Copy a challenge you want to keep.</p></details></footer>
+</main>
+<dialog id="replacePlanDialog" aria-labelledby="replacePlanTitle">
+  <h2 id="replacePlanTitle">Replace your edited plan?</h2><p id="replacePlanMessage">Your chapter notes will stay. The current beat edits will be replaced.</p>
+  <form method="dialog"><button value="cancel" autofocus>Keep current plan</button><button value="replace" class="primary">Replace plan</button></form>
+</dialog>
+<dialog id="copyDialog" aria-labelledby="copyTitle">
+  <h2 id="copyTitle">Copy your text</h2><p>Automatic copying wasn’t available. Select and copy the text below.</p>
+  <textarea id="copyText" aria-label="Text to copy" rows="14" readonly></textarea>
+  <form method="dialog"><button>Done</button></form>
+</dialog>
+<div id="status" role="status" aria-live="polite"></div>
+</body></html>
