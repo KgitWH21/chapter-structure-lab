@@ -66,6 +66,8 @@ The workflow in `.github/workflows/deploy-pages.yml` publishes only the contents
 
 The contents of `dist/` become the website root, so the site URL does not need `/dist/` at the end. Source files and reference documents remain in the repository but are not included in the Pages deployment. Future pushes to `main` update the site automatically.
 
+Upload and deployment run as separate jobs. Each upload attempt has a unique artifact name, passed to the deployment job. If deployment fails after a successful upload, choose **Re-run failed jobs** to retry deployment with that upload. If the artifact has expired (uploads are retained for one day), start a fresh run with **Run workflow** instead. A successful upload alone does not mean the site deployed; the **deploy** job must also succeed.
+
 ## Mobile deployment
 
 Publish the contents of dist to your own HTTPS static host without a login gate. The deployment output directory is dist; there is no build step. Publish only dist, rather than the complete project and reference materials.
