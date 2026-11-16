@@ -361,3 +361,48 @@ test('ending catalog is original teaching material and feeds both the exercise a
   assert.match(app.get('endingExample').textContent, /\S/);
   assert.match(app.get('endingTask').textContent, /\S/);
 });
+
+test('random structure picks uniformly from the full catalog and ignores filters', () => {
+  const app = loadApp();
+  assert.equal(app.get('structureNumber').textContent, '#5 of 101');
+  assert.equal(app.get('randomStructure').disabled, false);
+  const picked = app.run(`(() => {
+    state.level = 'grounded';
+    state.usePurpose = true;
+    state.purpose = 1;
+    state.focus = 'both';
+    const outside = CATALOG.structures.find(s => s.level === 'wild' && !purpose().structures.includes(s.id));
+    if (!outside) throw new Error('Need a wild structure outside the purpose map');
+    const index = CATALOG.structures.findIndex(s => s.id === outside.id);
+    Math.random = () => (index + 0.25) / CATALOG.structures.length;
+    const before = { opening: state.opening, purpose: state.purpose, ending: state.ending, level: state.level };
+    document.getElementById('randomStructure').click();
+    return {
+      id: state.structure,
+      outside: outside.id,
+      filtered: pool('structure').some(s => s.id === state.structure),
+      number: document.getElementById('structureNumber').textContent,
+      total: CATALOG.structures.length,
+      before,
+      opening: state.opening,
+      purpose: state.purpose,
+      ending: state.ending,
+      level: state.level,
+      open: document.getElementById('originalExercise').open
+    };
+  })()`);
+  assert.equal(picked.total, 101);
+  assert.equal(picked.id, picked.outside);
+  assert.equal(picked.filtered, false);
+  assert.equal(picked.number, `#${picked.id} of 101`);
+  assert.equal(picked.opening, picked.before.opening);
+  assert.equal(picked.purpose, picked.before.purpose);
+  assert.equal(picked.ending, picked.before.ending);
+  assert.equal(picked.level, 'grounded');
+  assert.equal(picked.open, true);
+  app.get('lockStructure').click();
+  assert.equal(app.get('randomStructure').disabled, true);
+  app.run(`Math.random = () => 0;`);
+  app.get('randomStructure').click();
+  assert.equal(app.read('state.structure'), picked.id);
+});

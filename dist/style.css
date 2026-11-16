@@ -87,6 +87,12 @@ dialog form { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 12
   .beat-editor-top { flex-wrap: wrap; }
   .treatment-facts > div { grid-template-columns: 85px minmax(0, 1fr); }
 }
+.random-structure { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 14px; }
+.random-structure button { flex: 1; }
+.catalog-number { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -.02em; white-space: nowrap; }
+@media (max-width: 800px) {
+  .random-structure { flex-wrap: wrap; }
+}
 @media print {
   .comparison, #comparisonSettings, #originalExercise, .session-note, dialog { display: none; }
   #chapterNotes[open], #selectedPlan[open], #selectedPlan[open] details[open] { display: block; }

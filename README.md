@@ -18,6 +18,8 @@ The page opens on three treatments: Grounded, Exploratory, and Wild. Optional se
 
 **Original exercise & full catalog** holds 01 / Opening, 02 / Structure, and 03 / Ending. Each has a direct pick, a roll, a lock, a short explanation, an example, and a try-it prompt. **Use this combination** sends that trio into the plan. A locked ending is the ending on all three treatments.
 
+**Random structure**, on the Structure card, picks any of the 101 structures. It ignores purpose, family, and Explore. The card shows the catalog number, such as `#47 of 101`. The button is off while Structure is locked. The other rolls still follow purpose and Explore.
+
 Notes, plans, choices, and locks last only while the page is open. Copy or download what you want to keep.
 
 ## Open in VS Code

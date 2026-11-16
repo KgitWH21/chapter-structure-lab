@@ -35,6 +35,13 @@ function select(type,id){
  state[type]=match.id;render();return snapshot();
 }
 function openingTask(){return 'Write the opening in a few sentences. Keep this move. Use your own situation.'}
+function randomStructure(){
+ if(state.lockStructure) return;
+ const list=CATALOG.structures;
+ state.structure=list[Math.floor(Math.random()*list.length)].id;
+ $('originalExercise').open=true;
+ render();
+}
 function fillEndingSelect(select){
  select.innerHTML=[...new Set(ENDINGS.map(x=>x.category))].map(cat=>`<optgroup label="${esc(cat)}">${ENDINGS.filter(x=>x.category===cat).map(x=>`<option value="${esc(x.id)}">${String(ENDINGS.indexOf(x)+1).padStart(2,'0')} · ${esc(x.name)}</option>`).join('')}</optgroup>`).join('');
 }
@@ -45,6 +52,8 @@ function render(){renderPurpose();const {opening:o,structure:s,ending:e}=current
  $('structureName').textContent=s.name;$('structureDescription').textContent=s.description;$('structureRule').textContent=s.rule;
  $('beats').innerHTML=s.beats.map(b=>`<li><strong>${esc(b.title)}</strong>${state.examples?`<p>${esc(b.example)}</p>`:''}</li>`).join('');
  $('endingName').textContent=e.name;$('endingDescription').textContent=e.description;$('endingExample').textContent=e.example;$('endingTask').textContent=e.task;
+ $('structureNumber').textContent=`#${s.id} of ${CATALOG.structures.length}`;
+ $('randomStructure').disabled=state.lockStructure;
  for(const type of ['Opening','Structure','Ending']){const locked=state['lock'+type];$('lock'+type).textContent=locked?'Locked':'Lock';$('lock'+type).setAttribute('aria-pressed',String(locked));$('roll'+type).disabled=locked}
  $('openingCard').hidden=state.focus==='structure';$('structureCard').hidden=state.focus==='opening';
  const openingBlocked=state.focus==='structure'||state.lockOpening;
@@ -74,6 +83,7 @@ $('openingSelect').innerHTML=CATALOG.openings.map(x=>`<option value="${x.id}">${
 $('structureSelect').innerHTML=[...new Set(CATALOG.structures.map(x=>x.category))].map(cat=>`<optgroup label="${esc(cat)}">${CATALOG.structures.filter(x=>x.category===cat).map(x=>`<option value="${x.id}">${String(x.id).padStart(2,'0')} · ${esc(x.name)}</option>`).join('')}</optgroup>`).join('');
 fillEndingSelect($('endingSelect'));
 $('roll').onclick=()=>roll();$('rollOpening').onclick=()=>roll('opening');$('rollStructure').onclick=()=>roll('structure');$('rollEnding').onclick=()=>roll('ending');
+$('randomStructure').onclick=()=>randomStructure();
 for(const type of ['Opening','Structure','Ending'])$('lock'+type).onclick=()=>{state['lock'+type]=!state['lock'+type];render()};
 $('openingSelect').onchange=e=>select('opening',Number(e.target.value));$('structureSelect').onchange=e=>select('structure',Number(e.target.value));$('endingSelect').onchange=e=>select('ending',e.target.value);
 for(const key of ['level','focus','length'])$(key).onchange=e=>{state[key]=e.target.value;render()};$('showExamples').onchange=e=>{state.examples=e.target.checked;render()};
