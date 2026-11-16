@@ -1,24 +1,24 @@
 # Chapter Structure Lab — portable source
 
-Chapter Structure Lab includes 81 openings, 101 structural exercises, and 128 mapped scene purposes. This source includes a local chapter-planning extension to the original published export. It runs as static HTML, CSS, and JavaScript. No application login, backend, API key, or npm installation is required.
+Chapter Structure Lab includes 81 openings, 101 structural exercises, 32 endings, and 128 mapped scene purposes. It runs as static HTML, CSS, and JavaScript. No application login, backend, API key, or npm installation is required.
 
 This package is the current website source. A PWA manifest and offline service worker haven't been added yet. PWA-TASK.md contains a ready-to-use implementation brief for your coding agent in VS Code.
 
-## Plan a chapter
+## Plan a scene
 
-The default view compares three compact treatments: Straightforward, Unexpected, and Experimental. Optional information starts collapsed.
+The page opens on three treatments: Grounded, Exploratory, and Wild. Optional sections start collapsed.
 
-- **Your chapter:** jot down what happens, what changes, and what the reader should feel or wonder. These notes stay intact during rerolls. The app does not analyze your text or generate personalized prose.
-- **Purpose & settings:** pick the scene's job and practice scope. All treatments use that purpose. The comparison samples all three ranges; Explore controls the original exercise's rolls.
-- **New options:** refresh the comparison without changing the purpose or replacing your selected plan. A free pairing is clearly labeled when a range has no mapped structure. Locked choices are retained even if they fall outside a card's usual range.
-- **Details:** reveal reading effects, tradeoffs, information-order and ending choices, and separately expandable beat previews and examples. Guidance is editorial advice for these prose exercises; family-level guidance is labeled.
-- **Use this:** select a treatment, then expand **Your selected plan** to rename, add, remove, and reorder beats and add scene notes. Use the buttons to move beats with a mouse or keyboard. Information order and ending are adaptation prompts; changing them does not automatically rewrite or rearrange your beats.
-- **Mix treatments:** after selecting a plan, use the buttons inside another treatment's Details to borrow its opening or structure. Replacing a structure's edited beats requires confirmation.
-- **Copy plan / Download .txt:** export your chapter notes, the selected treatment, and your actual edited beat sequence. A selectable-text dialog is available when automatic clipboard copying fails.
+- **Your scene:** what happens, what changes, and what the reader should feel or wonder. Notes stay put when you reroll. The app does not analyze the text.
+- **Purpose & settings:** scene purpose, Explore range, practice scope, and length. The comparison always samples all three ranges. Explore controls rolls in the catalog. Locks apply to both.
+- **New options:** refresh the three treatments without replacing a selected plan.
+- **Details:** reading notes, information order, the ending (from the same catalog as 03 / Ending), beat preview, and examples.
+- **Use this:** make an editable plan. Rename, add, remove, and reorder beats. Changing the order or ending does not rewrite the beats for you.
+- **Mix:** inside another treatment’s Details, borrow its opening, structure, or ending. Replacing an edited structure asks first.
+- **Copy plan / Download .txt:** export the notes, treatment, ending, and edited beats.
 
-Changing the comparison's settings leaves the selected plan's purpose, practice scope, and length intact. Replacing an edited plan requires confirmation. The original catalog, direct picks, locks, rolls, and generic exercise copying remain under **Original exercise & full catalog**.
+**Original exercise & full catalog** holds 01 / Opening, 02 / Structure, and 03 / Ending. Each has a direct pick, a roll, a lock, a short explanation, an example, and a try-it prompt. **Use this combination** sends that trio into the plan. A locked ending is the ending on all three treatments.
 
-Notes, plans, choices, and locks last only while the page is open. Copy or download what you want to keep; there is no local storage, account, or automatic saving.
+Notes, plans, choices, and locks last only while the page is open. Copy or download what you want to keep.
 
 ## Open in VS Code
 
@@ -38,7 +38,7 @@ On Windows, use `py` in place of `python` if needed. Visit http://localhost:8000
 - dist/style.css — styling and mobile layout
 - dist/app.js — rolls, locks, matching, copying, and interface behavior
 - dist/planner.js — comparison candidates, chapter notes, editable plans, and export
-- dist/treatment-data.js — editorial reading guidance, information orders, and endings
+- dist/treatment-data.js — editorial reading guidance, information orders, and the ending catalog
 - dist/data.js — generated openings and structure catalog
 - dist/purposes.js — generated purpose catalog and mappings
 - purposes.txt — editable purpose definitions and structure IDs

@@ -1,9 +1,9 @@
 'use strict';
 
 const TREATMENT_LANES = [
-  { name: 'Straightforward', level: 'grounded' },
-  { name: 'Unexpected', level: 'exploratory' },
-  { name: 'Experimental', level: 'wild' }
+  { name: 'Grounded', level: 'grounded' },
+  { name: 'Exploratory', level: 'exploratory' },
+  { name: 'Wild', level: 'wild' }
 ];
 const planner = {
   notes: { happens: '', changes: '', reader: '' },
@@ -28,7 +28,8 @@ function plannerContext() {
   return JSON.stringify([
     state.usePurpose, state.usePurpose ? state.purpose : null, state.focus,
     state.lockOpening, state.lockOpening ? state.opening : null,
-    state.lockStructure, state.lockStructure ? state.structure : null
+    state.lockStructure, state.lockStructure ? state.structure : null,
+    state.lockEnding, state.lockEnding ? state.ending : null
   ]);
 }
 
@@ -55,7 +56,14 @@ function buildCandidate(lane, index, earlier = []) {
     }
   }
   const order = previous ? pick(INFORMATION_ORDERS, [previous.order]).id : 'blueprint';
-  const ending = previous ? pick(CHAPTER_ENDINGS, [previous.ending]).id : ['decision', 'revelation', 'image'][index];
+  let ending;
+  if (state.lockEnding) {
+    ending = state.ending;
+    kept.push('ending');
+  } else {
+    const endings = ENDINGS.filter(item => item.level === lane.level);
+    ending = pick(endings, [previous?.ending, ...earlier.map(item => item.ending)].filter(Boolean)).id;
+  }
   return {
     id: planner.nextId++, label: lane.name, opening, structure,
     purpose: state.usePurpose ? purpose() : null, focus: state.focus,
@@ -70,7 +78,7 @@ function generateCandidates(announce = false) {
   planner.context = plannerContext();
   candidates.forEach(renderCandidate);
   updatePlanSummary();
-  if (announce) notify('Three new options. Your chapter notes and selected plan are kept.');
+  if (announce) notify('Three new options. Your notes and selected plan stay.');
 }
 
 function fillOptions(select, options) {
@@ -97,15 +105,15 @@ function createCandidateCard(lane, index) {
         <label>Ending<select id="treatment-ending-${index}"></select></label>
         <p class="help" id="treatment-ending-guide-${index}"></p>
       </div>
-      <p class="help">Order and ending are choices to try. Adapt your beats if they differ from the blueprint’s sequence or resolution.</p>
-      <details id="treatment-beats-${index}"><summary>Original beat preview</summary><ol id="treatment-beat-list-${index}"></ol></details>
-      <details id="treatment-examples-${index}"><summary>Examples &amp; exercise rule</summary><div id="treatment-example-text-${index}"></div></details>
-      <div class="borrow-actions"><button id="borrow-opening-${index}" class="small">Use opening in plan</button><button id="borrow-structure-${index}" class="small">Use structure in plan</button></div>
+      <p class="help">Optional. Rewrite the beats if the order or ending needs it.</p>
+      <details id="treatment-beats-${index}"><summary>Beat preview</summary><ol id="treatment-beat-list-${index}"></ol></details>
+      <details id="treatment-examples-${index}"><summary>Examples</summary><div id="treatment-example-text-${index}"></div></details>
+      <div class="borrow-actions"><button id="borrow-opening-${index}" class="small">Use opening in plan</button><button id="borrow-structure-${index}" class="small">Use structure in plan</button><button id="borrow-ending-${index}" class="small">Use ending in plan</button></div>
     </details>`;
   $('treatments').appendChild(card);
   fillOptions($(`treatment-order-${index}`), INFORMATION_ORDERS);
-  fillOptions($(`treatment-ending-${index}`), CHAPTER_ENDINGS);
-  for (const [key, options] of [['order', INFORMATION_ORDERS], ['ending', CHAPTER_ENDINGS]]) {
+  fillEndingSelect($(`treatment-ending-${index}`));
+  for (const [key, options] of [['order', INFORMATION_ORDERS], ['ending', ENDINGS]]) {
     $(`treatment-${key}-${index}`).onchange = event => {
       if (!optionById(options, event.target.value)) return;
       const candidate = planner.candidates[index];
@@ -116,7 +124,7 @@ function createCandidateCard(lane, index) {
     };
   }
   $(`use-treatment-${index}`).onclick = () => requestPlan(planner.candidates[index]);
-  for (const part of ['opening', 'structure']) {
+  for (const part of ['opening', 'structure', 'ending']) {
     $(`borrow-${part}-${index}`).onclick = () => requestPart(part, planner.candidates[index]);
   }
 }
@@ -127,7 +135,7 @@ function renderCandidate(candidate, index) {
   if (opening) facts.push(['Opening', opening.name]);
   if (structure) facts.push(['Structure', structure.name]);
   facts.push(['Information order', optionById(INFORMATION_ORDERS, candidate.order).name]);
-  facts.push(['Ending', optionById(CHAPTER_ENDINGS, candidate.ending).name]);
+  facts.push(['Ending', optionById(ENDINGS, candidate.ending).name]);
   $(`treatment-facts-${index}`).innerHTML = facts.map(([name, value]) => `<div><dt>${name}</dt><dd>${esc(value)}</dd></div>`).join('');
   $(`treatment-pairing-${index}`).textContent = candidate.pairing;
   $(`treatment-pairing-${index}`).hidden = !candidate.pairing;
@@ -136,24 +144,27 @@ function renderCandidate(candidate, index) {
   const selected = planner.selected?.candidateId === candidate.id;
   $(`use-treatment-${index}`).textContent = selected ? 'Selected' : 'Use this';
   $(`use-treatment-${index}`).setAttribute('aria-pressed', String(selected));
-  for (const part of ['opening', 'structure']) {
+  for (const part of ['opening', 'structure', 'ending']) {
     $(`borrow-${part}-${index}`).hidden = !candidate[part];
-    $(`borrow-${part}-${index}`).disabled = !planner.selected?.[part];
+    $(`borrow-${part}-${index}`).disabled = part === 'ending' ? !planner.selected : !planner.selected?.[part];
   }
   const guidance = structure ? STRUCTURE_GUIDANCE[structure.id] || TREATMENT_GUIDANCE[structure.category] : null;
   $(`treatment-guidance-${index}`).innerHTML = guidance
     ? `<p class="help">${STRUCTURE_GUIDANCE[structure.id] ? 'Guidance for this exercise' : `Family guidance · ${esc(structure.category)}`}</p>
        <h4>Useful when</h4><p>${esc(guidance.useful)}</p><h4>Reader effect</h4><p>${esc(guidance.effect)}</p><h4>Watch out for</h4><p>${esc(guidance.caution)}</p>`
-    : `<h4>The opening’s move</h4><p>${esc(opening.description)}</p><h4>Try it</h4><p>${esc(openingTask(opening))}</p><h4>Watch out for</h4><p>Give the reader a person, place, or concrete action to follow while the technique creates curiosity.</p>`;
-  for (const [key, options] of [['order', INFORMATION_ORDERS], ['ending', CHAPTER_ENDINGS]]) {
+    : `<h4>The opening’s move</h4><p>${esc(opening.description)}</p><h4>Try it</h4><p>${esc(openingTask())}</p>`;
+  for (const [key, options] of [['order', INFORMATION_ORDERS], ['ending', ENDINGS]]) {
+    const option = optionById(options, candidate[key]);
     $(`treatment-${key}-${index}`).value = candidate[key];
-    $(`treatment-${key}-guide-${index}`).textContent = optionById(options, candidate[key]).guide;
+    $(`treatment-${key}-guide-${index}`).textContent = key === 'ending' ? option.description : option.guide;
   }
   $(`treatment-beats-${index}`).hidden = !structure;
   $(`treatment-beat-list-${index}`).innerHTML = structure ? structure.beats.map(beat => `<li>${esc(beat.title)}</li>`).join('') : '';
+  const ending = optionById(ENDINGS, candidate.ending);
   $(`treatment-example-text-${index}`).innerHTML =
     (opening ? `<h4>${esc(opening.name)}</h4><p>${esc(opening.example)}</p>` : '') +
-    (structure ? `<h4>${esc(structure.name)}</h4><p>${esc(structure.rule)}</p><ol>${structure.beats.map(beat => `<li><strong>${esc(beat.title)}</strong><p>${esc(beat.example)}</p></li>`).join('')}</ol>` : '');
+    (structure ? `<h4>${esc(structure.name)}</h4><p>${esc(structure.rule)}</p><ol>${structure.beats.map(beat => `<li><strong>${esc(beat.title)}</strong><p>${esc(beat.example)}</p></li>`).join('')}</ol>` : '') +
+    (ending ? `<h4>${esc(ending.name)}</h4><p>${esc(ending.example)}</p><p>${esc(ending.task)}</p>` : '');
 }
 
 function notesText() {
@@ -173,7 +184,7 @@ function requestPlan(candidate) {
   if (planner.selected?.dirty) {
     planner.pending = { kind: 'replace', candidate };
     $('replacePlanTitle').textContent = 'Replace your edited plan?';
-    $('replacePlanMessage').textContent = 'Your chapter notes will stay. The current beat edits will be replaced.';
+    $('replacePlanMessage').textContent = 'Your scene notes will stay. The current beat edits will be replaced.';
     $('replacePlanDialog').returnValue = '';
     $('replacePlanDialog').showModal();
     return;
@@ -183,7 +194,22 @@ function requestPlan(candidate) {
 
 function requestPart(part, candidate) {
   const plan = planner.selected;
-  if (!['opening', 'structure'].includes(part) || !plan?.[part] || !candidate[part]) return;
+  if (!['opening', 'structure', 'ending'].includes(part) || !plan || !candidate[part]) return;
+  if (part === 'ending') {
+    if (plan.ending === candidate.ending) {
+      notify('Your plan already uses this ending.');
+      return;
+    }
+    plan.ending = candidate.ending;
+    plan.label = 'Custom combination';
+    plan.candidateId = null;
+    plan.dirty = true;
+    renderPlan();
+    planner.candidates.forEach(renderCandidate);
+    notify('Plan updated with this ending.');
+    return;
+  }
+  if (!plan[part]) return;
   if (plan[part].id === candidate[part].id) {
     notify(`Your plan already uses this ${part}.`);
     return;
@@ -191,7 +217,7 @@ function requestPart(part, candidate) {
   if (part === 'structure' && plan.dirty) {
     planner.pending = { kind: 'structure', candidate };
     $('replacePlanTitle').textContent = 'Replace the beats in your plan?';
-    $('replacePlanMessage').textContent = 'The new structure will replace your beat titles and scene notes. Your opening, chapter notes, purpose, order, and ending will stay.';
+    $('replacePlanMessage').textContent = 'The new structure replaces your beats. Opening, notes, purpose, order, and ending stay.';
     $('replacePlanDialog').returnValue = '';
     $('replacePlanDialog').showModal();
     return;
@@ -238,7 +264,7 @@ function selectPlan(candidate) {
   planner.candidates.forEach(renderCandidate);
   // Selecting is not a request to show more information. Keep the plan collapsed initially.
   $('selectedPlan').querySelector('summary').focus();
-  notify('Treatment selected. Expand your selected plan to edit or export it.');
+  notify('Selected. Open the plan to edit or copy it.');
 }
 
 function writingTarget(plan) {
@@ -251,13 +277,14 @@ function updatePlanSummary() {
   if (!plan) return;
   $('planSummary').textContent = `${plan.structure?.name || plan.opening.name} · ${plan.beats.length} ${plan.beats.length === 1 ? 'beat' : 'beats'}${plan.dirty ? ' · Edited' : ''}`;
   $('planContext').textContent = plan.purpose?.id !== (state.usePurpose ? state.purpose : undefined) || plan.focus !== state.focus || plan.length !== state.length
-    ? 'Comparison settings have changed. This selected plan keeps the purpose, practice scope, and length you chose with it.'
-    : 'New options leave this plan intact.';
+    ? 'Comparison settings have changed. This plan keeps the purpose, practice, and length you chose with it.'
+    : 'New options leave this plan as it is.';
   $('planDescription').textContent = [plan.opening?.name, plan.structure?.name, writingTarget(plan), plan.purpose ? `Purpose: ${plan.purpose.name}` : 'Your own purpose'].filter(Boolean).join(' · ');
   $('planPairing').textContent = plan.pairing;
   $('planPairing').hidden = !plan.pairing;
+  const ending = optionById(ENDINGS, plan.ending);
   $('planOrderGuide').textContent = optionById(INFORMATION_ORDERS, plan.order).guide;
-  $('planEndingGuide').textContent = optionById(CHAPTER_ENDINGS, plan.ending).guide;
+  $('planEndingGuide').textContent = `${ending.description} ${ending.task}`;
 }
 
 function renderPlan() {
@@ -316,23 +343,31 @@ function planText() {
   if (plan.structure) lines.push(`Structure inspiration: ${plan.structure.name}`, `Original exercise rule: ${plan.structure.rule}`);
   if (plan.pairing) lines.push(plan.pairing);
   const order = optionById(INFORMATION_ORDERS, plan.order);
-  const ending = optionById(CHAPTER_ENDINGS, plan.ending);
-  lines.push('', `Information order: ${order.name}`, order.guide, `Ending: ${ending.name}`, ending.guide,
-    '', 'YOUR BEATS', 'This plan can depart from the original blueprint. Check that its sequence and ending work together.', '');
+  const ending = optionById(ENDINGS, plan.ending);
+  lines.push('', `Information order: ${order.name}`, order.guide, `Ending: ${ending.name}`, ending.description, ending.task,
+    '', 'YOUR BEATS', '');
   plan.beats.forEach((beat, index) => lines.push(`${index + 1}. ${beat.title || 'Untitled beat'}`, beat.notes || '(Add your scene notes.)', ''));
   return lines.join('\n');
 }
 
+function scopeLabel() {
+  const parts = [];
+  if (state.focus !== 'structure') parts.push('Opening');
+  if (state.focus !== 'opening') parts.push('Structure');
+  parts.push('Ending');
+  return parts.join(' + ');
+}
+
 function renderPlanner() {
-  $('comparisonPurpose').textContent = state.usePurpose ? purpose().name : 'Use your own purpose';
-  $('comparisonScope').textContent = state.focus === 'opening' ? 'Opening only' : state.focus === 'structure' ? 'Structure only' : 'Opening + structure';
+  $('comparisonPurpose').textContent = state.usePurpose ? purpose().name : 'Your own purpose';
+  $('comparisonScope').textContent = scopeLabel();
   if (planner.context !== plannerContext()) generateCandidates();
   updatePlanSummary();
 }
 
 TREATMENT_LANES.forEach(createCandidateCard);
 fillOptions($('planOrder'), INFORMATION_ORDERS);
-fillOptions($('planEnding'), CHAPTER_ENDINGS);
+fillEndingSelect($('planEnding'));
 for (const [field, id] of [['happens', 'chapterHappens'], ['changes', 'chapterChanges'], ['reader', 'chapterReader']]) {
   $(id).oninput = event => {
     planner.notes[field] = event.target.value;
@@ -350,7 +385,7 @@ $('replacePlanDialog').addEventListener('close', () => {
     else applyPart('structure', pending.candidate);
   }
 });
-for (const [key, options] of [['order', INFORMATION_ORDERS], ['ending', CHAPTER_ENDINGS]]) {
+for (const [key, options] of [['order', INFORMATION_ORDERS], ['ending', ENDINGS]]) {
   $(key === 'order' ? 'planOrder' : 'planEnding').onchange = event => {
     if (!planner.selected || !optionById(options, event.target.value)) return;
     planner.selected[key] = event.target.value;
@@ -394,7 +429,7 @@ $('useExercise').onclick = () => {
     opening: state.focus === 'structure' ? null : opening,
     structure: state.focus === 'opening' ? null : structure,
     purpose: state.usePurpose ? purpose() : null, focus: state.focus,
-    order: 'blueprint', ending: 'decision',
+    order: 'blueprint', ending: state.ending,
     pairing: state.focus !== 'opening' && state.usePurpose && !purpose().structures.includes(structure.id) ? 'Free pairing · structure is not mapped to this purpose.' : ''
   });
 };
