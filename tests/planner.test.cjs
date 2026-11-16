@@ -82,7 +82,7 @@ function loadApp() {
     document, navigator: { clipboard }, Math: math, console, Event,
     setTimeout: () => 0, clearTimeout() {}, Blob, URL
   });
-  for (const file of ['data.js', 'purposes.js', 'app.js', 'treatment-data.js', 'planner.js']) {
+  for (const file of ['data.js', 'purposes.js', 'treatment-data.js', 'app.js', 'planner.js']) {
     vm.runInContext(fs.readFileSync(path.join(root, 'dist', file), 'utf8'), context, { filename: file });
   }
   return {
@@ -197,7 +197,7 @@ test('edited plans require explicit replacement, with cancel and Escape keeping 
   assert.deepEqual(app.read('planner.selected'), before);
   app.get('use-treatment-1').click();
   app.get('replacePlanDialog').close('replace');
-  assert.equal(app.read('planner.selected.label'), 'Unexpected');
+  assert.equal(app.read('planner.selected.label'), 'Exploratory');
   assert.equal(app.read('planner.selected.dirty'), false);
 });
 
@@ -314,22 +314,95 @@ test('borrowing an opening retains beat edits; borrowing a structure requires re
   assert.match(app.read('planner.selected.pairing'), /Free pairing/);
 });
 
-test('original exercise selection and locked rerolls still work', async () => {
+test('original exercise selection and locked rerolls still work', () => {
   const app = loadApp();
   app.get('openingSelect').onchange({ target: { value: '81' } });
   app.get('structureSelect').onchange({ target: { value: '101' } });
+  app.get('endingSelect').onchange({ target: { value: 'image' } });
   app.get('lockOpening').click();
   app.get('lockStructure').click();
+  app.get('lockEnding').click();
   app.get('lockPurpose').click();
   app.get('roll').click();
   assert.equal(app.read('state.opening'), 81);
   assert.equal(app.read('state.structure'), 101);
+  assert.equal(app.read('state.ending'), 'image');
   assert.equal(app.read('state.purpose'), 1);
   app.get('useExercise').click();
   assert.equal(app.read('planner.selected.opening.id'), 81);
   assert.equal(app.read('planner.selected.structure.id'), 101);
+  assert.equal(app.read('planner.selected.ending'), 'image');
   assert.match(app.read('planner.selected.pairing'), /Free pairing/);
-  await app.get('copy').onclick();
-  assert.match(app.clipboard.text, /OPENING #81/);
-  assert.match(app.clipboard.text, /STRUCTURE #101/);
+  assert.equal(html.includes('Copy challenge'), false);
+  assert.equal(html.includes('id="copy"'), false);
+});
+
+test('ending catalog is original teaching material and feeds both the exercise and the treatments', () => {
+  const app = loadApp();
+  const count = app.read('ENDINGS.length');
+  assert.ok(count >= 20 && count <= 40);
+  assert.equal(app.run(`ENDINGS.every(e => e.id && e.name && e.category && e.description && e.example && e.task && ['grounded','exploratory','wild'].includes(e.level))`), true);
+  assert.equal(app.run('new Set(ENDINGS.map(e => e.id)).size === ENDINGS.length'), true);
+  assert.equal(app.run(`['decision','reversal','revelation','image','settling','question'].every(id => ENDINGS.some(e => e.id === id))`), true);
+  app.get('rollEnding').click();
+  assert.notEqual(app.read('state.ending'), 'decision');
+  app.get('lockEnding').click();
+  const locked = app.read('state.ending');
+  app.get('compare').click();
+  assert.equal(app.run('planner.candidates.every(c => c.ending === state.ending && c.kept.includes("ending"))'), true);
+  assert.equal(app.read('state.ending'), locked);
+  app.get('lockEnding').click();
+  app.get('compare').click();
+  assert.equal(app.run(`planner.candidates.every((c, i) => ENDINGS.find(e => e.id === c.ending).level === TREATMENT_LANES[i].level)`), true);
+  const beats = app.run(`(() => { document.getElementById('use-treatment-0').click(); return planner.selected.beats.map(b => b.id); })()`);
+  app.get('borrow-ending-1').click();
+  assert.deepEqual(app.run('planner.selected.beats.map(b => b.id)'), beats);
+  assert.equal(app.read('planner.selected.ending'), app.read('planner.candidates[1].ending'));
+  assert.match(app.get('endingExample').textContent, /\S/);
+  assert.match(app.get('endingTask').textContent, /\S/);
+});
+
+test('random structure picks uniformly from the full catalog and ignores filters', () => {
+  const app = loadApp();
+  assert.equal(app.get('structureNumber').textContent, '#5 of 101');
+  assert.equal(app.get('randomStructure').disabled, false);
+  const picked = app.run(`(() => {
+    state.level = 'grounded';
+    state.usePurpose = true;
+    state.purpose = 1;
+    state.focus = 'both';
+    const outside = CATALOG.structures.find(s => s.level === 'wild' && !purpose().structures.includes(s.id));
+    if (!outside) throw new Error('Need a wild structure outside the purpose map');
+    const index = CATALOG.structures.findIndex(s => s.id === outside.id);
+    Math.random = () => (index + 0.25) / CATALOG.structures.length;
+    const before = { opening: state.opening, purpose: state.purpose, ending: state.ending, level: state.level };
+    document.getElementById('randomStructure').click();
+    return {
+      id: state.structure,
+      outside: outside.id,
+      filtered: pool('structure').some(s => s.id === state.structure),
+      number: document.getElementById('structureNumber').textContent,
+      total: CATALOG.structures.length,
+      before,
+      opening: state.opening,
+      purpose: state.purpose,
+      ending: state.ending,
+      level: state.level,
+      open: document.getElementById('originalExercise').open
+    };
+  })()`);
+  assert.equal(picked.total, 101);
+  assert.equal(picked.id, picked.outside);
+  assert.equal(picked.filtered, false);
+  assert.equal(picked.number, `#${picked.id} of 101`);
+  assert.equal(picked.opening, picked.before.opening);
+  assert.equal(picked.purpose, picked.before.purpose);
+  assert.equal(picked.ending, picked.before.ending);
+  assert.equal(picked.level, 'grounded');
+  assert.equal(picked.open, true);
+  app.get('lockStructure').click();
+  assert.equal(app.get('randomStructure').disabled, true);
+  app.run(`Math.random = () => 0;`);
+  app.get('randomStructure').click();
+  assert.equal(app.read('state.structure'), picked.id);
 });
